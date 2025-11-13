@@ -1,0 +1,43 @@
+<div class="header-bar">
+  <img src="assets/logoagrosoft.png" alt="Logo Agrosoft" class="header-logo" />
+  <div class="actions">
+  <button mat-icon-button class="home-button" (click)="goBack()" matTooltip="Volver">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-icon-button class="home-button" (click)="goHome()" matTooltip="Inicio">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
+</div>
+<section *ngIf="employee" class="employee-detail">
+    <mat-card class="form-card">
+    <mat-card-title>Empleado: {{ employee.fullname }}</mat-card-title>
+    <mat-card-content>
+      <div class="info">
+        <p><strong>ID:</strong> {{ employee.id }}</p>
+        <p><strong>Rol:</strong> {{ employee.role }}</p>
+        <p><strong>Antigüedad (años):</strong> {{ employee.seniority }}</p>
+        <p><strong>Horas disponibles:</strong> {{ employee.availablehours }}</p>
+        <p><strong>Horas extra:</strong> {{ employee.overtimehours }}</p>
+        <p><strong>Salario:</strong> {{ employee.salary | currency:'ARS' }}</p>
+        <p><strong>Desempeño:</strong> {{ employee.performancescore }}%</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="form-card">
+  <mat-card-title>Tareas asignadas</mat-card-title>
+  <mat-card-content>
+    <ng-container *ngIf="employee.assignedtasks.length > 0; else noTasks">
+      <div class="info">
+        <p *ngFor="let task of employee.assignedtasks"> {{ task }}</p>
+      </div>
+    </ng-container>
+
+    <ng-template #noTasks>
+      <div class="info">
+        <p>No hay tareas asignadas.</p>
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

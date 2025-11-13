@@ -1,0 +1,107 @@
+.form-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  background-color: #dcf2de;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.scroll-panel {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #dcf2de;
+  z-index: 2;
+}
+
+.mat-card-title {
+  margin-left: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.search-field {
+  flex: 1 1 300px;
+  height: 50px;
+}
+
+table {
+  width: 100%;
+}
+
+.green-button {
+  background-color: #2e7d32 !important;
+  color: white !important;
+}
+
+.big-button {
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  min-width: 140px;
+  margin-top: 0.45rem;
+}
+
+.action-group {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+}
+
+.scroll-table-container {
+  max-height: 290px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(233, 243, 234, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-header-cell {
+  background-color: inherit;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;
+  padding: 0 1rem;
+}
+
+.header-logo {
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.home-button {
+  background-color: #2e7d32 !important;
+  color: white !important;
+  border-radius: 50%;
+}

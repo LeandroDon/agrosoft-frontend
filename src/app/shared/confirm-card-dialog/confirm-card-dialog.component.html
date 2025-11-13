@@ -1,0 +1,18 @@
+<mat-card class="confirm-card" [style.backgroundColor]="data.color || '#fbe9e7'">
+<mat-card-title class="confirm-title">
+  <mat-icon *ngIf="data.icon" class="entity-icon">{{ data.icon }}</mat-icon>
+  ¿Eliminar {{ data.gender === 'male' ? 'este' : 'esta' }} {{ data.entityType }}?
+</mat-card-title>
+  <mat-divider style="margin-bottom: 1rem;"></mat-divider>
+  <mat-card-content>
+    <div class="mat-input-element" *ngFor="let field of data.fields">
+        <span class="field-label">{{ field.label }}:</span>
+        <span class="field-value">{{ field.value }}</span>
+</div>
+
+  </mat-card-content>
+  <div class="dialog-actions">
+    <button mat-raised-button class="white-button" (click)="confirm()">Aceptar</button>
+    <button mat-raised-button class="red-button" (click)="cancel()">Cancelar</button>
+  </div>
+</mat-card>

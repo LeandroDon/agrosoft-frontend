@@ -1,0 +1,27 @@
+<div class="header-bar">
+  <img src="assets/logoagrosoft.png" alt="Logo Agrosoft" class="header-logo" />
+  <div class="actions">
+    <button mat-icon-button class="home-button" (click)="goBack()" matTooltip="Volver">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button mat-icon-button class="home-button" (click)="goHome()" matTooltip="Inicio">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+</div>
+
+<section *ngIf="machinery" class="machinery-detail">
+  <mat-card class="form-card">
+    <mat-card-title>Maquinaria: {{ machinery.name }}</mat-card-title>
+    <mat-card-content>
+      <div class="info">
+        <p><strong>ID:</strong> {{ machinery.id }}</p>
+        <p><strong>Marca:</strong> {{ machinery.brand }}</p>
+        <p><strong>Modelo:</strong> {{ machinery.model }}</p>
+        <p><strong>Estado:</strong> {{ translateStatus(machinery.status) }}</p>
+        <p><strong>Horas de uso:</strong> {{ machinery.hours_used }}</p>
+        <p><strong>Fecha de compra:</strong> {{ machinery.purchase_date | date:'longDate':'':'es-AR' }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

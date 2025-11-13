@@ -1,0 +1,71 @@
+<div class="header-bar">
+  <img src="assets/logoagrosoft.png" alt="Logo Agrosoft" class="header-logo" />
+  <button mat-icon-button class="home-button" (click)="goHome()" matTooltip="Inicio">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
+<mat-card class="form-card">
+  <mat-card-title class="mat-card-title">Gestión de Empleados</mat-card-title>
+  <mat-card-content>
+    <div class="actions">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Buscar por ID, nombre o rol</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (input)="search()" />
+        <button mat-icon-button matSuffix disabled>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button class="green-button big-button" [routerLink]="['/employees/new']">Agregar Empleado</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="form-card">
+  <mat-card-content>
+    <div class="scroll-table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 full-width-table">
+        
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fullname">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.fullname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Rol</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.role }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="performancescore">
+          <th mat-header-cell *matHeaderCellDef>Puntaje de Desempeño</th>
+          <td mat-cell *matCellDef="let employee">{{ employee.performancescore }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let employee">
+            <div class="action-group">
+              <button mat-icon-button [routerLink]="['/employees', employee.id]" matTooltip="Ver">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button [routerLink]="['/employees', employee.id, 'edit']" matTooltip="Editar">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="openConfirmDialog(employee)" matTooltip="Eliminar">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="sticky-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

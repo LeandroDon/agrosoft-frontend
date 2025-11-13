@@ -1,0 +1,70 @@
+<div class="header-bar">
+  <img src="assets/logoagrosoft.png" alt="Logo Agrosoft" class="header-logo" />
+  <div class="actions">
+  <button mat-icon-button class="home-button" (click)="goBack()" matTooltip="Volver">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-icon-button class="home-button" (click)="goHome()" matTooltip="Inicio">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
+</div>
+<section *ngIf="plot" class="plot-detail">
+  <mat-card class="form-card">
+    <mat-card-title></mat-card-title>
+    <mat-card-title>Lote: {{ plot.name }}</mat-card-title>
+    <mat-card-content>
+      <div class="info">
+        <p><strong>ID:</strong> {{ plot.id }}</p>
+        <p><strong>Número catastral:</strong> {{ plot.cadastralNumber }}</p>
+        <p><strong>Área:</strong> {{ plot.area }} ha</p>
+        <p><strong>Ubicación:</strong> {{ plot.location }}</p>
+        <p><strong>Estado:</strong> {{ translateStatus(plot.status) }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="form-card">
+    <mat-card-title>Tareas realizadas</mat-card-title>
+    <mat-card-content>
+      <ng-container *ngIf="plot.tasks.length > 0; else noTasks">
+        <div class="info">
+          <div *ngFor="let task of plot.tasks">
+            <p><strong>Tipo:</strong> {{ translateTask(task.type) }}</p>
+            <p><strong>Fecha:</strong> {{ task.date | date:'longDate':'':'es-AR' }}</p>
+            <p><strong>Insumos:</strong></p>
+            <ul>
+              <li *ngFor="let input of task.inputs">
+                {{ input.name }} ({{ translateInput(input.type) }}): {{ input.quantity }} {{ input.unit }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noTasks>
+        <div class="info">
+          <p>No hay tareas registradas.</p>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="form-card">
+    <mat-card-title>Lluvias registradas</mat-card-title>
+    <mat-card-content>
+      <ng-container *ngIf="plot.rainfall.length > 0; else noRain">
+        <div class="info">
+          <div *ngFor="let rain of plot.rainfall">
+            <p><strong>Fecha:</strong> {{ rain.date | date:'longDate':'':'es-AR' }}</p>
+            <p><strong>Milímetros:</strong> {{ rain.millimeters }} mm</p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noRain>
+        <div class="info">
+          <p>No hay datos de lluvia.</p>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</section>

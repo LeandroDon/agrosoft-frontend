@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.logo-img {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.menu-button {
+  font-size: 20px;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  background-color: #a5d6a7;
+  color: #1b5e20;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 200px;
+  text-align: center;
+}
+
+.menu-button:hover {
+  background-color: #81c784;
+}
