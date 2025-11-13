@@ -1,0 +1,76 @@
+<div class="header-bar">
+  <img src="assets/logoagrosoft.png" alt="Logo Agrosoft" class="header-logo" />
+  <button mat-icon-button class="home-button" (click)="goHome()" matTooltip="Inicio">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
+<mat-card class="form-card">
+  <mat-card-title class="mat-card-title">Gestión de Maquinaria</mat-card-title>
+  <mat-card-content>
+    <div class="actions">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Buscar por ID, nombre, marca o modelo</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (input)="search()" />
+        <button mat-icon-button matSuffix disabled>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button class="green-button big-button" [routerLink]="['/machinery/new']">Agregar Maquinaria</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="form-card">
+  <mat-card-content>
+    <div class="scroll-table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 full-width-table">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let machinery">{{ machinery.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let machinery">{{ machinery.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="brand">
+          <th mat-header-cell *matHeaderCellDef>Marca</th>
+          <td mat-cell *matCellDef="let machinery">{{ machinery.brand }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef>Modelo</th>
+          <td mat-cell *matCellDef="let machinery">{{ machinery.model }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let machinery">{{ translateStatus(machinery.status) }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let machinery">
+            <div class="action-group">
+              <button mat-icon-button [routerLink]="['/machinery', machinery.id]" matTooltip="Ver">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button [routerLink]="['/machinery', machinery.id, 'edit']" matTooltip="Editar">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="openConfirmDialog(machinery)" matTooltip="Eliminar">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="sticky-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

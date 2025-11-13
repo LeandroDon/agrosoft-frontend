@@ -1,0 +1,65 @@
+.form-card {
+  width: 60%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #dcf2de;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.machinery-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+mat-card-title {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+mat-card-content {
+  padding: 0.5rem 1rem;
+}
+
+.info p {
+  margin: 0.2rem 0;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  padding: 0 1rem;
+}
+
+.header-logo {
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.home-button {
+  background-color: #2e7d32 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.header-bar .actions {
+  margin-top: 0;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}

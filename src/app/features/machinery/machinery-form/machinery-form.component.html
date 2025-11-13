@@ -1,0 +1,73 @@
+<div class="header-bar">
+  <img src="assets/logoagrosoft.png" alt="Logo Agrosoft" class="header-logo" />
+  <div class="actions">
+    <button mat-icon-button class="home-button" (click)="goBack()" matTooltip="Cancelar">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button mat-icon-button class="home-button" (click)="goHome()" matTooltip="Inicio">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+</div>
+
+<section class="machinery-form">
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-card class="form-card">
+      <mat-card-content>
+        <h2 class="form-title-inside">
+          {{ machinery ? 'Editar Maquinaria' : 'Agregar Maquinaria' }}
+        </h2>
+
+        <div class="form-fields">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Marca</mat-label>
+            <input matInput formControlName="brand" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Modelo</mat-label>
+            <input matInput formControlName="model" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="status">
+              <mat-option value="active">Activa</mat-option>
+              <mat-option value="maintenance">En mantenimiento</mat-option>
+              <mat-option value="retired">Retirada</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Horas de uso</mat-label>
+            <input matInput type="number" formControlName="hours_used" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha de compra</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="purchase_date"
+                readonly
+                (keydown)="preventTyping($event)"
+              />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+
+        <div class="submit-actions button-center">
+          <button mat-raised-button class="green-button uniform-button" type="submit" [disabled]="form.invalid">
+            Guardar
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</section>
