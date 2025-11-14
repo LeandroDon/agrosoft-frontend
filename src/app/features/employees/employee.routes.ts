@@ -3,22 +3,22 @@ import { Routes } from '@angular/router';
 export const employeeRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./employee-list.component').then(m => m.EmployeeListComponent),
-    title: 'Listado de Empleados'
+    loadComponent: () => import('./employee-list/employee-list.component').then(m => m.EmployeeListComponent),
+    title: 'Agrosoft - Empleados'
   },
   {
     path: 'new',
-    loadComponent: () => import('./employee-form.component').then(m => m.EmployeeFormComponent),
-    title: 'Nuevo Empleado'
+    loadComponent: () => import('./employee-form/employee-form.component').then(m => m.EmployeeFormComponent),
+    title: 'Agrosoft - Agregar Empleado'
   },
   {
     path: ':id',
-    loadComponent: () => import('./employee-detail.component').then(m => m.EmployeeDetailComponent),
-    title: 'Detalle de Empleado'
+    loadComponent: () => import('./employee-detail/employee-detail.component').then(m => m.EmployeeDetailComponent),
+    title: 'Agrosoft - Detalle de Empleado'
   },
   {
     path: ':id/edit',
-    loadComponent: () => import('./employee-form.component').then(m => m.EmployeeFormComponent),
-    title: 'Editar Empleado'
+    loadComponent: () => import('./employee-form/employee-form.component').then(m => m.EmployeeFormComponent),
+    title: 'Agrosoft - Editar Empleado'
   }
 ];
