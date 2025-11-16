@@ -13,7 +13,12 @@ export class PlotService {
   constructor(private http: HttpClient) {}
 
   getPlots(): Observable<Plot[]> {
-  return this.http.get<Plot[]>(this.apiUrl);
+  return this.http.get<any[]>(this.apiUrl).pipe(
+    map(rawList => rawList.map(raw => ({
+      ...raw,
+      cadastralNumber: raw.cadastralNumber ?? raw.cadastralnumber ?? ''
+    })))
+  );
 }
 
   getPlot(id: string): Observable<Plot> {
